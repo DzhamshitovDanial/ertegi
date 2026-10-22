@@ -426,12 +426,12 @@
                 id: 'bauyrsaq',
                 title: 'Бауырсақ',
                 steps: [
-                    { title: 'Бауырсақ пісуі', text: 'Кемпір қамыр илеп, дөңгелек бауырсақ пісіреді.', img: 'images/bauyrsaq_1.jpg' },
-                    { title: 'Қашуы', text: 'Бауырсақ терезеден секіріп, орманға қашып кетеді.', img: 'images/bauyrsaq_2.jpg' },
-                    { title: 'Қоян', text: 'Жолда ол қоянды кездестіріп, ән айтып қашады.', img: 'images/bauyrsaq_3.jpg' },
-                    { title: 'Қасқыр мен Аю', text: 'Қасқыр мен аюдан да қулықпен құтылады.', img: 'images/bauyrsaq_4.jpg' },
-                    { title: 'Түлкі', text: 'Ку түлкі оны мақтап, мұрнына қондырады.', img: 'images/bauyrsaq_5.jpg' },
-                    { title: 'Аяқталуы', text: 'Абайламаған бауырсақты түлкі жеп қояды.', img: 'images/bauyrsaq_6.jpg' }
+                    { title: 'Бауырсақ пісуі', text: 'Кемпір қамыр илеп, дөңгелек бауырсақ пісіреді.', img: 'images/kolobok1.jfif' },
+                    { title: 'Қашуы', text: 'Бауырсақ терезеден секіріп, орманға қашып кетеді.', img: 'images/kolobok2.jfif' },
+                    { title: 'Қоян', text: 'Жолда ол қоянды кездестіріп, ән айтып қашады.', img: 'images/kolobok3.jfif' },
+                    { title: 'Қасқыр мен Аю', text: 'Қасқыр мен аюдан да қулықпен құтылады.', img: 'images/kolobok4.jfif' },
+                    { title: 'Түлкі', text: 'Ку түлкі оны мақтап, мұрнына қондырады.', img: 'images/kolobok5.jfif' },
+                    { title: 'Аяқталуы', text: 'Абайламаған бауырсақты түлкі жеп қояды.', img: 'images/kolobok6.jfif' }
                 ],
                 quiz: [
                     { q: 'Бауырсақты кім пісірді?', opts: ['Әже', 'Анасы', 'Қыз'], correct: 0 },
@@ -446,12 +446,13 @@
                 id: 'shalqan',
                 title: 'Шалқан',
                 steps: [
-                    { title: 'Отырғызу', text: 'Атасы бақшаға шалқан отырғызады.', img: 'images/shalqan_1.jpg' },
-                    { title: 'Тарту', text: 'Шалқан үлкен болады, атасы тартады бірақ шығара алмайды.', img: 'images/shalqan_2.jpg' },
-                    { title: 'Әже көмектеседі', text: 'Атасы әжесін шақырады. Олар екеуі тартады.', img: 'images/shalqan_3.jpg' },
-                    { title: 'Немересі', text: 'Олар немересін шақырады, бірақ әлі де шықпайды.', img: 'images/shalqan_4.jpg' },
-                    { title: 'Жануарлар', text: 'Ит пен мысық та көмекке келеді.', img: 'images/shalqan_5.jpg' },
-                    { title: 'Шалқан шықты', text: 'Кішкентай тышқанның көмегімен шалқанды суырып алады.', img: 'images/shalqan_6.jpg' }
+                    // СІЗДІҢ rb1 - rb6 СУРЕТТЕРІҢІЗ ОСЫНДА ҚОСЫЛДЫ
+                    { title: 'Отырғызу', text: 'Атасы бақшаға шалқан отырғызады.', img: 'images/rb1.jfif' },
+                    { title: 'Тарту', text: 'Шалқан үлкен болады, атасы тартады бірақ шығара алмайды.', img: 'images/rb2.jfif' },
+                    { title: 'Әже көмектеседі', text: 'Атасы әжесін шақырады. Олар екеуі тартады.', img: 'images/rb3.jfif' },
+                    { title: 'Немересі', text: 'Олар немересін шақырады, бірақ әлі де шықпайды.', img: 'images/rb4.jfif' },
+                    { title: 'Жануарлар', text: 'Ит пен мысық та көмекке келеді.', img: 'images/rb5.jfif' },
+                    { title: 'Шалқан шықты', text: 'Кішкентай тышқанның көмегімен шалқанды суырып алады.', img: 'images/rb6.jfif' }
                 ],
                 quiz: [
                     { q: 'Шалқанды ең соңында кім тартты?', opts: ['Ит', 'Мысық', 'Тышқан'], correct: 2 }
@@ -511,7 +512,6 @@
             stepCompleted = false;
             activeMnemonicIndex = 0;
             
-            // 2-ші қадамның күйін бастапқы қалпына келтіру
             poolState = currentStory.steps.map(s => s.title).sort(() => Math.random() - 0.5);
             slotState = Array(currentStory.steps.length).fill(null);
             
@@ -612,7 +612,7 @@
 
         function selectMnemonic(index) { activeMnemonicIndex = index; renderStep1(document.getElementById('mainPanel')); }
 
-        // 2-ҚАДАМ (Drag & Drop логикасы толық жаңартылды)
+        // 2-ҚАДАМ
         function getImgSrc(title) {
             const step = currentStory.steps.find(s => s.title === title);
             return step && step.img ? step.img : '';
@@ -687,14 +687,12 @@
             if (!draggedItem) return;
 
             if (draggedItem.source === 'pool') {
-                // Қордан келсе
                 poolState.splice(draggedItem.index, 1);
                 if (slotState[targetSlotIndex]) {
-                    poolState.push(slotState[targetSlotIndex]); // Босатқан орынға ескі суретті қорға қайтару
+                    poolState.push(slotState[targetSlotIndex]);
                 }
                 slotState[targetSlotIndex] = draggedItem.cardTitle;
             } else if (draggedItem.source === 'slot') {
-                // Басқа торкөзден келсе (орындарын ауыстыру)
                 const sourceIdx = draggedItem.index;
                 const targetCard = slotState[targetSlotIndex];
                 slotState[targetSlotIndex] = slotState[sourceIdx];
